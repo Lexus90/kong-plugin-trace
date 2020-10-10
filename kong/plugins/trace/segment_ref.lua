@@ -14,7 +14,7 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 --
-local k_utils = require "kong.tools.utils"
+local k_utils = require ("kong.plugins.trace.util")
 local encode_base64 = ngx.encode_base64
 local decode_base64 = ngx.decode_base64
 

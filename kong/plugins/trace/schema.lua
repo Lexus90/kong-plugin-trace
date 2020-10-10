@@ -18,7 +18,7 @@
 local typedefs = require "kong.db.schema.typedefs"
 
 return {
-  name = "skywalking",
+  name = "trace",
   fields = {
     { protocols = typedefs.protocols_http },
     { config = {

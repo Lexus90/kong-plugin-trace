@@ -15,8 +15,8 @@
 -- limitations under the License.
 --
 local timestamp = require "kong.tools.timestamp"
-local spanLayer = require("kong.plugins.skywalking.span_layer")
-local SegmentRef = require("kong.plugins.skywalking.segment_ref")
+local spanLayer = require("kong.plugins.trace.span_layer")
+local SegmentRef = require("kong.plugins.trace.segment_ref")
 
 local CONTEXT_CARRIER_KEY = 'sw8'
 

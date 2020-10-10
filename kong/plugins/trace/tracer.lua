@@ -14,14 +14,14 @@
 -- See the License for the specific language governing permissions and
 -- limitations under the License.
 --
-local Span = require('kong.plugins.skywalking.span')
+local Span = require('kong.plugins.trace.span')
 local kong = kong
 
 local Tracer = {}
 
 function Tracer:start(config, correlation)
-    local TC = require('kong.plugins.skywalking.tracing_context')
-    local Layer = require('kong.plugins.skywalking.span_layer')
+    local TC = require('kong.plugins.trace.tracing_context')
+    local Layer = require('kong.plugins.trace.span_layer')
 
     local tracingContext
     local service_name = config.service_name
@@ -74,8 +74,8 @@ function Tracer:finish()
 end
 
 function Tracer:prepareForReport()
-    local TC = require('kong.plugins.skywalking.tracing_context')
-    local Segment = require('kong.plugins.skywalking.segment')
+    local TC = require('kong.plugins.trace.tracing_context')
+    local Segment = require('kong.plugins.trace.segment')
     if kong.ctx.plugin.entrySpan ~= nil then
         Span.finish(kong.ctx.plugin.entrySpan, ngx.now() * 1000)
         local status, segment = TC.drainAfterFinished(kong.ctx.plugin.tracingContext)

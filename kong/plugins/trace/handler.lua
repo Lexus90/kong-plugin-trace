@@ -16,12 +16,12 @@
 --
 
 local socket = require('socket')
-local sw_client = require "kong.plugins.skywalking.client"
-local sw_tracer = require "kong.plugins.skywalking.tracer"
+local sw_client = require "kong.plugins.trace.client"
+local sw_tracer = require "kong.plugins.trace.tracer"
 
 local SkyWalkingHandler = {
   PRIORITY = 2001,
-  VERSION = "0.2.0-3",
+  VERSION = "0.2.0-4",
 }
 
 function SkyWalkingHandler:access(config)

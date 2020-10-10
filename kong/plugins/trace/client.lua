@@ -60,9 +60,9 @@ function Client:startBackendTimer(config)
         if not ok then
             log.err("failed to create timer: ", err)
             return
-        end  
+        end
         metadata_buffer:set('sw_heartbeat_timer',true)
-        
+
     end
 end
 
@@ -72,7 +72,7 @@ function Client:reportServiceInstance(metadata_buffer, config)
     local service_instance_name = config.service_instance_name
 
     local cjson = require('cjson')
-    local reportInstance = require("kong.plugins.skywalking.management").newReportInstanceProperties(service_name, service_instance_name)
+    local reportInstance = require("kong.plugins.trace.management").newReportInstanceProperties(service_name, service_instance_name)
     local reportInstanceParam, err = cjson.encode(reportInstance)
     if err then
         log.err("Request to report instance fails, ", err)
@@ -108,7 +108,7 @@ function Client:ping(metadata_buffer, config)
     local service_instance_name = config.service_instance_name
 
     local cjson = require('cjson')
-    local pingPkg = require("kong.plugins.skywalking.management").newServiceInstancePingPkg(service_name, service_instance_name)
+    local pingPkg = require("kong.plugins.trace.management").newServiceInstancePingPkg(service_name, service_instance_name)
     local pingPkgParam, err = cjson.encode(pingPkg)
     if err then
         log.err("Agent ping fails, ", err)

@@ -15,9 +15,9 @@
 -- limitations under the License.
 --
 
-local k_utils = require "kong.tools.utils"
-local Span = require('kong.plugins.skywalking.span')
-local CorrelationContext = require('kong.plugins.skywalking.correlation_context')
+local k_utils = require ("kong.plugins.trace.util")
+local Span = require('kong.plugins.trace.span')
+local CorrelationContext = require('kong.plugins.trace.correlation_context')
 
 local CONTEXT_CORRELATION_KEY = 'sw8-correlation'
 
@@ -113,7 +113,7 @@ function _M.new(serviceName, serviceInstanceName)
     end
 
     local tracing_context = {}
-    tracing_context.trace_id = k_utils.uuid()
+    tracing_context.trace_id = k_utils.newID()
     tracing_context.segment_id = tracing_context.trace_id
     tracing_context.service = serviceName
     tracing_context.service_instance = serviceInstanceName

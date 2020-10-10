@@ -1,8 +1,8 @@
-package = "kong-plugin-skywalking" 
+package = "kong-plugin-trace"
 
-version = "0.2.0-3" 
+version = "0.2.0-4"
 
-local pluginName = "skywalking"
+local pluginName = "trace"
 
 supported_platforms = {"linux", "macosx"}
 source = {
