@@ -77,7 +77,7 @@ _M.is_ngx_lua = ok
 local MAX_SEQ = 10000
 
 local timeSeq = function()
-    return ngx.now() * MAX_SEQ + math.random(0, MAX_SEQ)
+    return (ngx.now() * 1000) .. math.random(0, MAX_SEQ)
 end
 
 --PROCESS_ID.THREAD_ID.(TIME_MILLIS*10000+Seq)
