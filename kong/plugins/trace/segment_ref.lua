@@ -15,8 +15,8 @@
 -- limitations under the License.
 --
 local k_utils = require ("kong.plugins.trace.util")
-local encode_base64 = ngx.encode_base64
-local decode_base64 = ngx.decode_base64
+local encode_base64 = k_utils.encode_base64
+local decode_base64 = k_utils.decode_base64
 
 local _M = {}
 -- local SegmentRef = {

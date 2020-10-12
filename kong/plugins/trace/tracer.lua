@@ -68,6 +68,11 @@ end
 function Tracer:finish()
     -- Finish the exit span when received the first response package from upstream
     if kong.ctx.plugin.exitSpan ~= nil then
+        -- add http.status
+        --local upstream_status = tonumber(ngx.var.upstream_status)
+        --if upstream_status then
+        --    Span.tag(ngx.ctx.exitSpan, 'http.status', upstream_status)
+        --end
         Span.finish(kong.ctx.plugin.exitSpan, ngx.now() * 1000)
         kong.ctx.plugin.exitSpan = nil
     end
@@ -77,6 +82,12 @@ function Tracer:prepareForReport()
     local TC = require('kong.plugins.trace.tracing_context')
     local Segment = require('kong.plugins.trace.segment')
     if kong.ctx.plugin.entrySpan ~= nil then
+        -- add http.status
+        --local ngxstatus = ngx.var.status
+        --Span.tag(ngx.ctx.entrySpan, 'http.status', ngxstatus)
+        --if tonumber(ngxstatus) >= 500 then
+        --    Span.errorOccurred(ngx.ctx.entrySpan)
+        --end
         Span.finish(kong.ctx.plugin.entrySpan, ngx.now() * 1000)
         local status, segment = TC.drainAfterFinished(kong.ctx.plugin.tracingContext)
         if status then

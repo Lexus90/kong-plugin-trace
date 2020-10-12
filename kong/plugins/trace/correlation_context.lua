@@ -20,8 +20,8 @@ local ELEMENT_MAX_NUMBER = 3
 local VALUE_MAX_LENGTH = 128
 
 local k_utils = require ("kong.plugins.trace.util")
-local encode_base64 = ngx.encode_base64
-local decode_base64 = ngx.decode_base64
+local encode_base64 = k_utils.encode_base64
+local decode_base64 = k_utils.decode_base64
 
 local _M = {}
 
