@@ -94,7 +94,7 @@ function Client:reportServiceInstance(metadata_buffer, config)
     if not res then
         log.err("Instance report fails, uri:", uri, ", err:", err)
     elseif res.status == 200 then
-        log.debug("Instance report, uri:", uri, ", response = ", res.body)
+        --log.debug("Instance report, uri:", uri, ", response = ", res.body)
         metadata_buffer:set('sw_instancePropertiesSubmitted', true)
     else
         log.err("Instance report fails, uri:", uri, ", response code ", res.status)
@@ -201,7 +201,7 @@ function Client:reportTraces(metadata_buffer, config)
     end
 
     if totalCount > 0 then
-        log.debug(totalCount,  " segments reported.")
+        --log.debug(totalCount,  " segments reported.")
     end
 end
 
