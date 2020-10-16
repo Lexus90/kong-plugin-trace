@@ -40,7 +40,7 @@ function SkyWalkingHandler:access(config)
 
     config.service_instance_name = instance_name
   else
-    config.service_instance_name = config.instance_namePush the data
+    config.service_instance_name = config.instance_name
   end
 
   -- set sample ratio
